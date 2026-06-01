@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'core/theme/app_theme.dart';
 import 'models/task.dart';
 import 'repositories/category_repository.dart';
 import 'repositories/task_repository.dart';
@@ -36,13 +37,15 @@ class TaskManagerApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => TaskListViewModel(taskRepo, categoryRepo)..carregar(),
+          create: (_) =>
+              TaskListViewModel(taskRepo, categoryRepo)..inicializar(),
         ),
       ],
       child: MaterialApp(
-        title: 'Task Manager',
+        title: 'TaskFy',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(colorSchemeSeed: Colors.indigo),
+        theme: AppTheme.darkTheme(),
+        themeMode: ThemeMode.dark,
         home: const TaskListView(),
         onGenerateRoute: (settings) {
           if (settings.name == TaskFormView.routeName) {

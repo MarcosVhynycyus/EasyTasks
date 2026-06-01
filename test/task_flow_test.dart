@@ -78,7 +78,14 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Comprar leite e pão'), findsNothing);
 
-    await tester.tap(find.text('Todas'));
+    // "Todas" existe no filtro de status e no de categorias; selecionamos o do
+    // status (SegmentedButton) para voltar a ver todas as tarefas.
+    await tester.tap(
+      find.descendant(
+        of: find.byType(SegmentedButton<int>),
+        matching: find.text('Todas'),
+      ),
+    );
     await tester.pumpAndSettle();
     expect(find.text('Comprar leite e pão'), findsOneWidget);
 
