@@ -62,4 +62,3 @@ flutter analyze      # análise estática (lint)
 ## Documentação
 
 - [docs/specs.md](docs/specs.md) — especificação (requisitos e regras de negócio)
-- [CLAUDE.md](CLAUDE.md) — contexto e regras de arquitetura do projeto
